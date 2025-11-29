@@ -1,176 +1,73 @@
-🌍 Aerosol-Type Classification System
+# Global Aerosol Type Classification System
 
-A Machine Learning–based Global Aerosol Identification Project
+A machine learning-based hybrid algorithm for accurate classification of atmospheric aerosol types using AERONET data.
 
-📌 Overview
+## 📋 Project Overview
 
-This project focuses on building a complete aerosol-type classification system using optical properties and machine learning.
-We classify aerosols into:
+This project implements an advanced aerosol classification system that combines Gaussian kernel density clustering, Mie scattering modeling, and random forest algorithms to identify five major aerosol types globally.
 
-🟫 Dust
+**Key Metrics:**
+- 89% overall accuracy
+- 95% micro-precision
+- ~20 seconds processing time per site
+- 47 AERONET sites across 5 continents
 
-🟤 Mixed-Coarse
+## 🎯 Objectives
 
-🟡 Mixed-Fine
+- Develop a hybrid algorithm combining density clustering with machine learning
+- Improve classification accuracy using multiple optical and microphysical parameters
+- Create a scalable system for global aerosol monitoring
+- Generate spatial distribution maps for climate research
 
-🔵 Urban/Industrial
+## 🏗️ System Architecture
 
-🔥 Biomass Burning
+The system operates in three stages:
 
-Our system integrates data preprocessing, feature extraction, optical modeling, and a Random Forest classifier to accurately identify global aerosol types from AERONET optical data.
+### Stage 1: Preliminary Classification
+- Gaussian kernel density clustering on optical properties (SSA, EAE)
+- Baseline characterization of five aerosol types
 
-👥 Team Members
+### Stage 2: Optical Database Generation
+- Construct synthetic database using Mie scattering model
+- Calculate complex refractive index (CRI) for each aerosol type
+- Generate data at multiple wavelengths (440, 675, 870, 1020 nm)
 
-Karan Khonde
+### Stage 3: Classification & Validation
+- Random forest classifier for aerosol identification
+- Performance validation against baseline
+- Global distribution mapping
 
-[Add other group members]
+## 📊 Aerosol Types Classified
 
-🚀 Features
+1. **Dust Aerosols** - Desert-origin particles
+2. **Mixed-Coarse** - Large particles with moderate absorption
+3. **Mixed-Fine** - Small anthropogenic particles
+4. **Urban/Industrial** - Fine particles from combustion
+5. **Biomass Burning** - Particles from fires
 
-✔ Classifies aerosols into 5 categories
-✔ Uses AERONET optical parameters (SSA, AOD, EAE, g)
-✔ Includes optical simulation using the Mie Scattering model
-✔ Robust Random Forest classifier for final predictions
-✔ Global aerosol-type distribution visualization
-✔ Clean and modular code structure
+## 🛠️ Tech Stack
 
-🧠 System Architecture
+- Python 3.7+
+- scikit-learn (Random Forest, clustering)
+- NumPy & Pandas (data processing)
+- Matplotlib (visualization)
+- Mie scattering library
 
-Our aerosol classification pipeline consists of four main modules:
 
-1. Data Preprocessing
 
-Reads raw AERONET Level-2 data
+## 📈 Performance Results
 
-Removes invalid/noisy readings
+| Metric | Value |
+|--------|-------|
+| Overall Accuracy | 89% |
+| Micro-Precision | 95% |
+| Micro-Recall | 89% |
+| Micro-F1-Score | 91% |
 
-Normalizes optical parameters
 
-2. Feature Engineering
+## 📊 Outputs
 
-Extracts core features:
-
-Single Scattering Albedo (SSA)
-
-Ångström Exponent (EAE)
-
-Normalized AOD
-
-Asymmetry parameter (g)
-
-3. Optical Modeling
-
-Uses Mie Scattering to simulate optical behavior
-
-Generates additional features based on:
-
-Particle size distribution
-
-Refractive index
-
-Wavelength-dependent absorption/scattering
-
-4. Machine Learning Model
-
-Random Forest Classifier
-
-Hyperparameter tuning using Grid Search
-
-Outputs 5 aerosol-type labels
-
-📊 Dataset
-
-We used global AERONET data covering multiple regions:
-Africa • Asia • Europe • North America • South America
-
-Each region includes diverse aerosol sources such as desert dust, urban pollution, and biomass burning.
-
-📈 Model Performance
-
-Accuracy: ~89%
-
-Micro Precision: ~95%
-
-Micro Recall: ~89%
-
-Micro F1-Score: ~91%
-
-The system performs strongly across all aerosol categories, especially Dust, U/I, and Biomass Burning.
-
-🛠 Tech Stack
-
-Python
-
-NumPy / Pandas
-
-Scikit-learn
-
-Matplotlib
-
-Mie Scattering Simulation Library
-
-AERONET Dataset
-
-📁 Project Structure
-├── data/
-│   ├── raw/
-│   ├── processed/
-├── src/
-│   ├── preprocess.py
-│   ├── feature_engineering.py
-│   ├── mie_scattering.py
-│   ├── classify.py
-│   ├── model.py
-│   ├── visualization.py
-├── results/
-│   ├── plots/
-│   ├── maps/
-├── README.md
-├── requirements.txt
-
-▶️ Usage
-1. Install Dependencies
-pip install -r requirements.txt
-
-2. Preprocess Dataset
-python src/preprocess.py
-
-3. Generate Optical Features
-python src/feature_engineering.py
-
-4. Train the Classifier
-python src/model.py
-
-5. Classify New Aerosol Data
-python src/classify.py --input sample.csv
-
-🌐 Visualizations
-
-The project includes:
-
-Aerosol-type pie charts
-
-Continental distribution maps
-
-Confusion matrix of model performance
-
-SSA vs EAE clusters
-
-Global aerosol-type map
-
-🤝 Contribution
-
-Pull requests and improvements are welcome.
-To contribute:
-
-Fork the repo
-
-Create a new branch
-
-Commit changes
-
-Submit a PR
-
-📄 License
-
-This project is open-source under the MIT License.
+- Global and continental aerosol distribution maps
+- Performance comparison visualizations
+- Classification reports with regional statistics
+- Interactive visualizations in Jupyter notebooks
